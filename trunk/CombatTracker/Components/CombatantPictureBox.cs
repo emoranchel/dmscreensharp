@@ -47,12 +47,15 @@ namespace CombatTracker.Components {
     private bool mouseDown;
     private Point mouseLocation;
     private Point startLocation;
+    private DistanceToolip tooltip = new DistanceToolip();
     protected override void OnMouseDown(MouseEventArgs e) {
       startLocation = this.Location;
       Point p = new Point();
       GetCursorPos(ref p);
       mouseLocation = p;
       mouseDown = true;
+      tooltip.Location = new Point(p.X - 10, p.Y - 10 - tooltip.Height);
+      tooltip.Show();
     }
     protected override void OnMouseUp(MouseEventArgs e) {
       mouseDown = false;
@@ -66,11 +69,19 @@ namespace CombatTracker.Components {
       combatant.PosX = (finalLocation.X / zoom);
       combatant.PosY = (finalLocation.Y / zoom);
       combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      tooltip.Hide();
     }
     protected override void OnMouseMove(MouseEventArgs e) {
       if (mouseDown) {
         Point p = new Point();
         GetCursorPos(ref p);
+        double deltaX = p.X - mouseLocation.X;
+        double deltaY = p.Y - mouseLocation.Y;
+        deltaX = deltaX / zoom;
+        deltaY = deltaY / zoom;
+        double distance = Math.Sqrt(Math.Pow(deltaY, 2) + Math.Pow(deltaX, 2));
+        tooltip.TooltipText = distance.ToString("N02");
+        tooltip.Location = new Point(p.X - 10, p.Y - e.Y - tooltip.Height);
         this.Location = new Point(startLocation.X + (p.X - mouseLocation.X), startLocation.Y + (p.Y - mouseLocation.Y));
       }
     }
