@@ -15,20 +15,27 @@ namespace CombatTracker.Components {
 
     public int Zoom {
       get { return zoom; }
-      set { value = value < 25 ? 25 : value; this.zoom = value; this.Size = new System.Drawing.Size(zoom, zoom); combatant_Updated(combatant, Combatant.CombatantProperty.ALL); this.Invalidate(); }
+      set {
+        value = value < 25 ? 25 : value;
+        this.zoom = value;
+        this.Size = new System.Drawing.Size(zoom, zoom);
+        combatant_Updated(combatant, Combatant.CombatantProperty.position);
+        this.Invalidate();
+      }
     }
 
     public CombatantPictureBox(Combatant combatant, int pictureSize) {
       this.combatant = combatant;
       this.Name = "pictureBox1";
-      this.Size = new System.Drawing.Size(zoom, zoom);
       this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.TabIndex = 4;
       this.TabStop = false;
       this.BackColor = Color.Transparent;
       combatantDelegate = new CombatantUpdatedModifiedDelegate(combatant_Updated);
       combatant.Updated += combatantDelegate;
-      combatant_Updated(combatant, Combatant.CombatantProperty.ALL);
+      combatant_Updated(combatant, Combatant.CombatantProperty.portrait);
+      combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      this.Zoom = pictureSize;
     }
 
     void combatant_Updated(object source, Combatant.CombatantProperty property) {
@@ -59,9 +66,9 @@ namespace CombatTracker.Components {
     }
     protected override void OnMouseUp(MouseEventArgs e) {
       mouseDown = false;
-      Point finalLocation = new Point(this.Location.X, this.Location.Y);
-      finalLocation.X += e.X;
-      finalLocation.Y += e.Y;
+      Point p = new Point();
+      GetCursorPos(ref p);
+      Point finalLocation = new Point(startLocation.X + (p.X - mouseLocation.X), startLocation.Y + (p.Y - mouseLocation.Y));
       if (finalLocation.X < 0)
         finalLocation.X = 0;
       if (finalLocation.Y < 0)
