@@ -11,13 +11,13 @@ using CombatTracker.Components;
 using System.Collections;
 
 namespace CombatTracker {
-  public partial class CombatScreen : Form {
+  public partial class DMScreen : Form {
     const int SCREEN_GRID_SIZE = 25;
     private Combat combat;
     private Hashtable combatantControls = new Hashtable();
     private Hashtable picCollection = new Hashtable();
 
-    public CombatScreen(Combat combat) {
+    public DMScreen(Combat combat) {
       InitializeComponent();
       this.combat = combat;
       combat.CombatantAdded += new CombatantDelegate(combat_CombatantAdded);
@@ -132,6 +132,10 @@ namespace CombatTracker {
 
     private void numericUpDown2_ValueChanged(object sender, EventArgs e) {
       combat.Height = (int)numericUpDown2.Value;
+    }
+
+    private void button4_Click(object sender, EventArgs e) {
+      Program.Control.showPlayersView();
     }
   }
 }

@@ -1,5 +1,5 @@
 ﻿namespace CombatTracker {
-  partial class CombatView {
+  partial class PlayersView {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -25,12 +25,12 @@
     private void InitializeComponent() {
       this.mapGroup = new System.Windows.Forms.GroupBox();
       this.map = new System.Windows.Forms.Panel();
+      this.gridPanel1 = new CombatTracker.Components.GridPanel();
       this.combatants = new System.Windows.Forms.GroupBox();
       this.container = new System.Windows.Forms.Panel();
       this.panel2 = new System.Windows.Forms.Panel();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.gridPanel1 = new CombatTracker.Components.GridPanel();
       this.mapGroup.SuspendLayout();
       this.map.SuspendLayout();
       this.combatants.SuspendLayout();
@@ -59,6 +59,16 @@
       this.map.Name = "map";
       this.map.Size = new System.Drawing.Size(322, 287);
       this.map.TabIndex = 0;
+      // 
+      // gridPanel1
+      // 
+      this.gridPanel1.BackColor = System.Drawing.Color.Transparent;
+      this.gridPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+      this.gridPanel1.GridSize = 25;
+      this.gridPanel1.Location = new System.Drawing.Point(0, 0);
+      this.gridPanel1.Name = "gridPanel1";
+      this.gridPanel1.Size = new System.Drawing.Size(500, 500);
+      this.gridPanel1.TabIndex = 0;
       // 
       // combatants
       // 
@@ -111,25 +121,16 @@
       this.label1.Text = "label1";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // gridPanel1
-      // 
-      this.gridPanel1.BackColor = System.Drawing.Color.Transparent;
-      this.gridPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-      this.gridPanel1.GridSize = 25;
-      this.gridPanel1.Location = new System.Drawing.Point(0, 0);
-      this.gridPanel1.Name = "gridPanel1";
-      this.gridPanel1.Size = new System.Drawing.Size(500, 500);
-      this.gridPanel1.TabIndex = 0;
-      // 
-      // CombatView
+      // PlayersView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(586, 306);
       this.Controls.Add(this.mapGroup);
       this.Controls.Add(this.combatants);
-      this.Name = "CombatView";
-      this.Text = "Combatants";
+      this.Name = "PlayersView";
+      this.Text = "Player\'s View";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayersView_FormClosing);
       this.mapGroup.ResumeLayout(false);
       this.map.ResumeLayout(false);
       this.combatants.ResumeLayout(false);

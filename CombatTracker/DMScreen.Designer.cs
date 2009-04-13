@@ -1,5 +1,5 @@
 ﻿namespace CombatTracker {
-  partial class CombatScreen {
+  partial class DMScreen {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -63,9 +63,11 @@
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabMap = new System.Windows.Forms.TabPage();
       this.map = new System.Windows.Forms.Panel();
+      this.gridPanel1 = new CombatTracker.Components.GridPanel();
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.leftPanel = new System.Windows.Forms.Panel();
-      this.gridPanel1 = new CombatTracker.Components.GridPanel();
+      this.button4 = new System.Windows.Forms.Button();
+      this.panel5 = new System.Windows.Forms.Panel();
       this.groupBox1.SuspendLayout();
       this.panel3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerInit)).BeginInit();
@@ -89,6 +91,7 @@
       this.tabMap.SuspendLayout();
       this.map.SuspendLayout();
       this.leftPanel.SuspendLayout();
+      this.panel5.SuspendLayout();
       this.SuspendLayout();
       // 
       // container
@@ -329,8 +332,7 @@
       // groupBox3
       // 
       this.groupBox3.Controls.Add(this.groupBox4);
-      this.groupBox3.Controls.Add(this.button1);
-      this.groupBox3.Controls.Add(this.button2);
+      this.groupBox3.Controls.Add(this.panel5);
       this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
       this.groupBox3.Location = new System.Drawing.Point(0, 0);
       this.groupBox3.Name = "groupBox3";
@@ -343,9 +345,9 @@
       // 
       this.groupBox4.Controls.Add(this.label3);
       this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.groupBox4.Location = new System.Drawing.Point(173, 16);
+      this.groupBox4.Location = new System.Drawing.Point(174, 16);
       this.groupBox4.Name = "groupBox4";
-      this.groupBox4.Size = new System.Drawing.Size(144, 42);
+      this.groupBox4.Size = new System.Drawing.Size(143, 42);
       this.groupBox4.TabIndex = 0;
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Initiative";
@@ -356,7 +358,7 @@
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.Location = new System.Drawing.Point(3, 16);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(138, 23);
+      this.label3.Size = new System.Drawing.Size(137, 23);
       this.label3.TabIndex = 0;
       this.label3.Text = "label3";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -364,9 +366,9 @@
       // button1
       // 
       this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-      this.button1.Location = new System.Drawing.Point(88, 16);
+      this.button1.Location = new System.Drawing.Point(0, 0);
       this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(85, 42);
+      this.button1.Size = new System.Drawing.Size(85, 19);
       this.button1.TabIndex = 1;
       this.button1.Text = "Next";
       this.button1.UseVisualStyleBackColor = true;
@@ -376,9 +378,9 @@
       // 
       this.button2.Dock = System.Windows.Forms.DockStyle.Left;
       this.button2.Enabled = false;
-      this.button2.Location = new System.Drawing.Point(3, 16);
+      this.button2.Location = new System.Drawing.Point(85, 0);
       this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(85, 42);
+      this.button2.Size = new System.Drawing.Size(85, 19);
       this.button2.TabIndex = 2;
       this.button2.Text = "Prev";
       this.button2.UseVisualStyleBackColor = true;
@@ -466,7 +468,7 @@
       this.trackBar1.Maximum = 6;
       this.trackBar1.Minimum = 1;
       this.trackBar1.Name = "trackBar1";
-      this.trackBar1.Size = new System.Drawing.Size(74, 42);
+      this.trackBar1.Size = new System.Drawing.Size(74, 30);
       this.trackBar1.TabIndex = 3;
       this.trackBar1.Value = 1;
       this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -581,6 +583,14 @@
       this.map.Size = new System.Drawing.Size(534, 543);
       this.map.TabIndex = 4;
       // 
+      // gridPanel1
+      // 
+      this.gridPanel1.GridSize = 25;
+      this.gridPanel1.Location = new System.Drawing.Point(0, 0);
+      this.gridPanel1.Name = "gridPanel1";
+      this.gridPanel1.Size = new System.Drawing.Size(500, 500);
+      this.gridPanel1.TabIndex = 3;
+      // 
       // tabPage2
       // 
       this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -602,23 +612,37 @@
       this.leftPanel.Size = new System.Drawing.Size(320, 624);
       this.leftPanel.TabIndex = 0;
       // 
-      // gridPanel1
+      // button4
       // 
-      this.gridPanel1.GridSize = 25;
-      this.gridPanel1.Location = new System.Drawing.Point(0, 0);
-      this.gridPanel1.Name = "gridPanel1";
-      this.gridPanel1.Size = new System.Drawing.Size(500, 500);
-      this.gridPanel1.TabIndex = 3;
+      this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.button4.Location = new System.Drawing.Point(0, 19);
+      this.button4.Name = "button4";
+      this.button4.Size = new System.Drawing.Size(171, 23);
+      this.button4.TabIndex = 3;
+      this.button4.Text = "Show Players View";
+      this.button4.UseVisualStyleBackColor = true;
+      this.button4.Click += new System.EventHandler(this.button4_Click);
       // 
-      // CombatScreen
+      // panel5
+      // 
+      this.panel5.Controls.Add(this.button2);
+      this.panel5.Controls.Add(this.button1);
+      this.panel5.Controls.Add(this.button4);
+      this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+      this.panel5.Location = new System.Drawing.Point(3, 16);
+      this.panel5.Name = "panel5";
+      this.panel5.Size = new System.Drawing.Size(171, 42);
+      this.panel5.TabIndex = 4;
+      // 
+      // DMScreen
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(868, 624);
       this.Controls.Add(this.tabControl1);
       this.Controls.Add(this.leftPanel);
-      this.Name = "CombatScreen";
-      this.Text = "Form1";
+      this.Name = "DMScreen";
+      this.Text = "DM Screen";
       this.groupBox1.ResumeLayout(false);
       this.panel3.ResumeLayout(false);
       this.panel3.PerformLayout();
@@ -648,6 +672,7 @@
       this.tabMap.ResumeLayout(false);
       this.map.ResumeLayout(false);
       this.leftPanel.ResumeLayout(false);
+      this.panel5.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -697,6 +722,8 @@
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.NumericUpDown newPlayerWidth;
     private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Panel panel5;
+    private System.Windows.Forms.Button button4;
 
   }
 }

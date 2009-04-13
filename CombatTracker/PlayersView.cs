@@ -11,13 +11,13 @@ using CombatTracker.Components;
 using System.Collections;
 
 namespace CombatTracker {
-  public partial class CombatView : Form {
+  public partial class PlayersView : Form {
     private Combat combat;
     private Hashtable vizCollection = new Hashtable();
     private Hashtable picCollection = new Hashtable();
     private CombatantUpdatedModifiedDelegate combatantModified;
 
-    public CombatView(CombatTracker.Entity.Combat combat) {
+    public PlayersView(CombatTracker.Entity.Combat combat) {
       InitializeComponent();
       this.combat = combat;
       combat.CombatModified += new CombatModifiedDelegate(combat_CombatModified);
@@ -88,6 +88,11 @@ namespace CombatTracker {
     private void resizeGrid() {
       gridPanel1.Size = new Size(combat.Width * combat.GridSize, combat.Height * combat.GridSize);
       gridPanel1.GridSize = combat.GridSize;
+    }
+
+    private void PlayersView_FormClosing(object sender, FormClosingEventArgs e) {
+      e.Cancel = true;
+      this.Hide();
     }
   }
 }
