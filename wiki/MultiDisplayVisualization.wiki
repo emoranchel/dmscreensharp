@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Multi Display Visualization is a feature that will help you as DM use two monitors, one for you the other for your players, is like having your notes on one screen and the action on the other.
 #labels Phase-Design
 
 = Introduction =
