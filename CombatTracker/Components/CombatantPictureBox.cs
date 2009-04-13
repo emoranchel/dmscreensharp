@@ -39,10 +39,15 @@ namespace CombatTracker.Components {
     }
 
     void combatant_Updated(object source, Combatant.CombatantProperty property) {
-      if (property == Combatant.CombatantProperty.position || property == Combatant.CombatantProperty.ALL) {
-        this.Location = new System.Drawing.Point((combatant.PosX * zoom), (combatant.PosY * zoom));
+      if (property == Combatant.CombatantProperty.position) {
+        if (Parent == null || !(Parent is Panel)) {
+          this.Location = new System.Drawing.Point((combatant.Position.X * zoom), (combatant.Position.Y * zoom));
+        } else {
+          Panel parent = (Panel)Parent;
+          this.Location = new System.Drawing.Point((combatant.Position.X * zoom) + parent.AutoScrollPosition.X, (combatant.Position.Y * zoom) + parent.AutoScrollPosition.Y);
+        }
       }
-      if (property == Combatant.CombatantProperty.portrait || property == Combatant.CombatantProperty.ALL) {
+      if (property == Combatant.CombatantProperty.portrait) {
         this.Image = combatant.CharacterPortrait;
       }
     }
@@ -53,16 +58,29 @@ namespace CombatTracker.Components {
 
     private bool mouseDown;
     private Point mouseLocation;
+    private Point startDragLocation;
     private Point startLocation;
     private DistanceToolip tooltip = new DistanceToolip();
     protected override void OnMouseDown(MouseEventArgs e) {
-      startLocation = this.Location;
+      startDragLocation = this.Location;
+      startLocation = getLocation(this.Location);
       Point p = new Point();
       GetCursorPos(ref p);
       mouseLocation = p;
       mouseDown = true;
+      //DEBUG
+      Console.WriteLine("StartDrag at:" + startDragLocation);
+      //show tooltip
       tooltip.Location = new Point(p.X - 10, p.Y - 10 - tooltip.Height);
       tooltip.Show();
+    }
+
+    private Point getLocation(Point point) {
+      if (Parent == null || !(Parent is Panel)) {
+        return point;
+      }
+      Panel parent = (Panel)Parent;
+      return new Point(point.X - parent.AutoScrollPosition.X, point.Y - parent.AutoScrollPosition.Y);
     }
     protected override void OnMouseUp(MouseEventArgs e) {
       mouseDown = false;
@@ -73,9 +91,12 @@ namespace CombatTracker.Components {
         finalLocation.X = 0;
       if (finalLocation.Y < 0)
         finalLocation.Y = 0;
-      combatant.PosX = (finalLocation.X / zoom);
-      combatant.PosY = (finalLocation.Y / zoom);
-      combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      Point newCombatant = new Point((int)Math.Round((double)finalLocation.X / zoom), (int)Math.Round((double)finalLocation.Y / zoom));
+      if (newCombatant != combatant.Position) {
+        combatant.Position = newCombatant;
+      } else {
+        combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      }
       tooltip.Hide();
     }
     protected override void OnMouseMove(MouseEventArgs e) {
@@ -89,7 +110,7 @@ namespace CombatTracker.Components {
         double distance = Math.Sqrt(Math.Pow(deltaY, 2) + Math.Pow(deltaX, 2));
         tooltip.TooltipText = distance.ToString("N02");
         tooltip.Location = new Point(p.X - 10, p.Y - e.Y - tooltip.Height);
-        this.Location = new Point(startLocation.X + (p.X - mouseLocation.X), startLocation.Y + (p.Y - mouseLocation.Y));
+        this.Location = new Point(startDragLocation.X + (p.X - mouseLocation.X), startDragLocation.Y + (p.Y - mouseLocation.Y));
       }
     }
 

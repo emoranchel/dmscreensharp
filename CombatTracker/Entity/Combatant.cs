@@ -8,17 +8,17 @@ namespace CombatTracker.Entity {
   public delegate void CombatantUpdatedModifiedDelegate(Combatant source, Combatant.CombatantProperty property);
 
   public class Combatant {
-    public enum CombatantProperty { name, hp, position, portrait, initiative, player, ALL };
+    public enum CombatantProperty { name, hp, position, portrait, initiative, player, visible };
     private static int counter;
     private string name;
     private int maxHp;
     private int currentHp;
-    private int posX;
-    private int posY;
+    private Point position;
     private Image characterPortrait;
     private bool player;
     private int initiative;
     private int id;
+    private bool visible;
 
     public event CombatantUpdatedModifiedDelegate Updated;
 
@@ -31,24 +31,29 @@ namespace CombatTracker.Entity {
       get { return id; }
     }
 
-    public int PosX {
-      get { return posX; }
-      set { if (posX == value) return; posX = value; onUpdate(CombatantProperty.position); }
+    public Point Position {
+      get { return position; }
+      set {
+        if (position == value) return;
+        position = value;
+        onUpdate(CombatantProperty.position);
+        Console.WriteLine("combatant new position now at: " + position.ToString());
+      }
     }
-    public int PosY {
-      get { return posY; }
-      set { if (posY == value) return; posY = value; onUpdate(CombatantProperty.position); }
+    public bool Visible {
+      get { return visible; }
+      set { visible = value; onUpdate(CombatantProperty.visible); }
     }
 
-    public Combatant(string name, int maxHp, int init, bool player) {
+    public Combatant(string name, int maxHp, int init, bool player, bool visible) {
       this.id = counter++;
       this.name = name;
       this.maxHp = maxHp;
       this.currentHp = maxHp;
       this.player = player;
       this.initiative = init;
-      posX = 5;
-      posY = 5;
+      this.position = new Point(0, 0);
+      this.visible = visible;
       this.characterPortrait = getPortrait(id);
     }
 
