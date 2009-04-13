@@ -36,10 +36,10 @@
       this.label7 = new System.Windows.Forms.Label();
       this.newPlayerWidth = new System.Windows.Forms.NumericUpDown();
       this.label8 = new System.Windows.Forms.Label();
+      this.newPlayerIsVisible = new System.Windows.Forms.CheckBox();
       this.panel1 = new System.Windows.Forms.Panel();
       this.newPlayerName = new System.Windows.Forms.TextBox();
       this.newPlayerIsPlayer = new System.Windows.Forms.CheckBox();
-      this.newPlayerIsVisible = new System.Windows.Forms.CheckBox();
       this.label1 = new System.Windows.Forms.Label();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -63,11 +63,13 @@
       this.button3 = new System.Windows.Forms.Button();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.tabMap = new System.Windows.Forms.TabPage();
+      this.tabCombat = new System.Windows.Forms.TabPage();
+      this.MainPanel = new System.Windows.Forms.Panel();
       this.map = new System.Windows.Forms.Panel();
       this.gridPanel1 = new DmScreenSharp.Components.GridPanel();
-      this.tabPage2 = new System.Windows.Forms.TabPage();
       this.leftPanel = new System.Windows.Forms.Panel();
+      this.tabMapEditor = new System.Windows.Forms.TabPage();
+      this.label9 = new System.Windows.Forms.Label();
       this.groupBox1.SuspendLayout();
       this.panel3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerInit)).BeginInit();
@@ -89,9 +91,11 @@
       this.groupBox6.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
       this.tabControl1.SuspendLayout();
-      this.tabMap.SuspendLayout();
+      this.tabCombat.SuspendLayout();
+      this.MainPanel.SuspendLayout();
       this.map.SuspendLayout();
       this.leftPanel.SuspendLayout();
+      this.tabMapEditor.SuspendLayout();
       this.SuspendLayout();
       // 
       // container
@@ -99,7 +103,7 @@
       this.container.Dock = System.Windows.Forms.DockStyle.Fill;
       this.container.Location = new System.Drawing.Point(3, 16);
       this.container.Name = "container";
-      this.container.Size = new System.Drawing.Size(314, 450);
+      this.container.Size = new System.Drawing.Size(259, 457);
       this.container.TabIndex = 0;
       // 
       // groupBox1
@@ -108,9 +112,9 @@
       this.groupBox1.Controls.Add(this.panel4);
       this.groupBox1.Controls.Add(this.panel1);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.groupBox1.Location = new System.Drawing.Point(0, 530);
+      this.groupBox1.Location = new System.Drawing.Point(0, 537);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(320, 94);
+      this.groupBox1.Size = new System.Drawing.Size(265, 86);
       this.groupBox1.TabIndex = 1;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Add new";
@@ -125,15 +129,15 @@
       this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
       this.panel3.Location = new System.Drawing.Point(3, 61);
       this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(314, 22);
+      this.panel3.Size = new System.Drawing.Size(259, 22);
       this.panel3.TabIndex = 6;
       // 
       // btnAddPlayer
       // 
       this.btnAddPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.btnAddPlayer.Location = new System.Drawing.Point(218, 0);
+      this.btnAddPlayer.Location = new System.Drawing.Point(171, 0);
       this.btnAddPlayer.Name = "btnAddPlayer";
-      this.btnAddPlayer.Size = new System.Drawing.Size(96, 22);
+      this.btnAddPlayer.Size = new System.Drawing.Size(88, 22);
       this.btnAddPlayer.TabIndex = 4;
       this.btnAddPlayer.Text = "Add";
       this.btnAddPlayer.UseVisualStyleBackColor = true;
@@ -142,9 +146,9 @@
       // newPlayerInit
       // 
       this.newPlayerInit.Dock = System.Windows.Forms.DockStyle.Left;
-      this.newPlayerInit.Location = new System.Drawing.Point(140, 0);
+      this.newPlayerInit.Location = new System.Drawing.Point(126, 0);
       this.newPlayerInit.Name = "newPlayerInit";
-      this.newPlayerInit.Size = new System.Drawing.Size(78, 20);
+      this.newPlayerInit.Size = new System.Drawing.Size(45, 20);
       this.newPlayerInit.TabIndex = 2;
       this.newPlayerInit.Enter += new System.EventHandler(this.newPlayerInit_Enter);
       // 
@@ -152,7 +156,7 @@
       // 
       this.label4.AutoSize = true;
       this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-      this.label4.Location = new System.Drawing.Point(109, 0);
+      this.label4.Location = new System.Drawing.Point(95, 0);
       this.label4.Name = "label4";
       this.label4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
       this.label4.Size = new System.Drawing.Size(31, 13);
@@ -164,7 +168,7 @@
       this.newPlayerHp.Dock = System.Windows.Forms.DockStyle.Left;
       this.newPlayerHp.Location = new System.Drawing.Point(31, 0);
       this.newPlayerHp.Name = "newPlayerHp";
-      this.newPlayerHp.Size = new System.Drawing.Size(78, 20);
+      this.newPlayerHp.Size = new System.Drawing.Size(64, 20);
       this.newPlayerHp.TabIndex = 1;
       this.newPlayerHp.Value = new decimal(new int[] {
             1,
@@ -190,10 +194,11 @@
       this.panel4.Controls.Add(this.label7);
       this.panel4.Controls.Add(this.newPlayerWidth);
       this.panel4.Controls.Add(this.label8);
+      this.panel4.Controls.Add(this.newPlayerIsVisible);
       this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
       this.panel4.Location = new System.Drawing.Point(3, 39);
       this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(314, 22);
+      this.panel4.Size = new System.Drawing.Size(259, 22);
       this.panel4.TabIndex = 7;
       // 
       // newPlayerHeight
@@ -264,16 +269,27 @@
       this.label8.TabIndex = 3;
       this.label8.Text = "Size: ";
       // 
+      // newPlayerIsVisible
+      // 
+      this.newPlayerIsVisible.AutoSize = true;
+      this.newPlayerIsVisible.Dock = System.Windows.Forms.DockStyle.Right;
+      this.newPlayerIsVisible.Location = new System.Drawing.Point(194, 0);
+      this.newPlayerIsVisible.Name = "newPlayerIsVisible";
+      this.newPlayerIsVisible.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+      this.newPlayerIsVisible.Size = new System.Drawing.Size(65, 22);
+      this.newPlayerIsVisible.TabIndex = 4;
+      this.newPlayerIsVisible.Text = "visible";
+      this.newPlayerIsVisible.UseVisualStyleBackColor = true;
+      // 
       // panel1
       // 
       this.panel1.Controls.Add(this.newPlayerName);
       this.panel1.Controls.Add(this.newPlayerIsPlayer);
-      this.panel1.Controls.Add(this.newPlayerIsVisible);
       this.panel1.Controls.Add(this.label1);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
       this.panel1.Location = new System.Drawing.Point(3, 16);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(314, 23);
+      this.panel1.Size = new System.Drawing.Size(259, 23);
       this.panel1.TabIndex = 2;
       // 
       // newPlayerName
@@ -281,32 +297,20 @@
       this.newPlayerName.Dock = System.Windows.Forms.DockStyle.Fill;
       this.newPlayerName.Location = new System.Drawing.Point(35, 0);
       this.newPlayerName.Name = "newPlayerName";
-      this.newPlayerName.Size = new System.Drawing.Size(150, 20);
+      this.newPlayerName.Size = new System.Drawing.Size(160, 20);
       this.newPlayerName.TabIndex = 0;
       // 
       // newPlayerIsPlayer
       // 
       this.newPlayerIsPlayer.AutoSize = true;
       this.newPlayerIsPlayer.Dock = System.Windows.Forms.DockStyle.Right;
-      this.newPlayerIsPlayer.Location = new System.Drawing.Point(185, 0);
+      this.newPlayerIsPlayer.Location = new System.Drawing.Point(195, 0);
       this.newPlayerIsPlayer.Name = "newPlayerIsPlayer";
       this.newPlayerIsPlayer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
       this.newPlayerIsPlayer.Size = new System.Drawing.Size(64, 23);
       this.newPlayerIsPlayer.TabIndex = 3;
       this.newPlayerIsPlayer.Text = "player";
       this.newPlayerIsPlayer.UseVisualStyleBackColor = true;
-      // 
-      // newPlayerIsVisible
-      // 
-      this.newPlayerIsVisible.AutoSize = true;
-      this.newPlayerIsVisible.Dock = System.Windows.Forms.DockStyle.Right;
-      this.newPlayerIsVisible.Location = new System.Drawing.Point(249, 0);
-      this.newPlayerIsVisible.Name = "newPlayerIsVisible";
-      this.newPlayerIsVisible.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-      this.newPlayerIsVisible.Size = new System.Drawing.Size(65, 23);
-      this.newPlayerIsVisible.TabIndex = 4;
-      this.newPlayerIsVisible.Text = "visible";
-      this.newPlayerIsVisible.UseVisualStyleBackColor = true;
       // 
       // label1
       // 
@@ -321,10 +325,10 @@
       // groupBox2
       // 
       this.groupBox2.Controls.Add(this.container);
-      this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+      this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
       this.groupBox2.Location = new System.Drawing.Point(0, 61);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(320, 469);
+      this.groupBox2.Size = new System.Drawing.Size(265, 476);
       this.groupBox2.TabIndex = 0;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Combatants";
@@ -336,7 +340,7 @@
       this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
       this.groupBox3.Location = new System.Drawing.Point(0, 0);
       this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Size = new System.Drawing.Size(320, 61);
+      this.groupBox3.Size = new System.Drawing.Size(265, 61);
       this.groupBox3.TabIndex = 3;
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "Combat controls";
@@ -347,7 +351,7 @@
       this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
       this.groupBox4.Location = new System.Drawing.Point(174, 16);
       this.groupBox4.Name = "groupBox4";
-      this.groupBox4.Size = new System.Drawing.Size(143, 42);
+      this.groupBox4.Size = new System.Drawing.Size(88, 42);
       this.groupBox4.TabIndex = 0;
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Initiative";
@@ -358,7 +362,7 @@
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.Location = new System.Drawing.Point(3, 16);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(137, 23);
+      this.label3.Size = new System.Drawing.Size(82, 23);
       this.label3.TabIndex = 0;
       this.label3.Text = "label3";
       this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -380,7 +384,7 @@
       this.button2.Enabled = false;
       this.button2.Location = new System.Drawing.Point(85, 0);
       this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(85, 19);
+      this.button2.Size = new System.Drawing.Size(86, 19);
       this.button2.TabIndex = 2;
       this.button2.Text = "Prev";
       this.button2.UseVisualStyleBackColor = true;
@@ -414,9 +418,9 @@
       this.panel2.Controls.Add(this.groupBox5);
       this.panel2.Controls.Add(this.groupBox6);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.panel2.Location = new System.Drawing.Point(3, 546);
+      this.panel2.Location = new System.Drawing.Point(0, 574);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(534, 49);
+      this.panel2.Size = new System.Drawing.Size(602, 49);
       this.panel2.TabIndex = 2;
       // 
       // groupBox7
@@ -427,7 +431,7 @@
       this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
       this.groupBox7.Location = new System.Drawing.Point(368, 0);
       this.groupBox7.Name = "groupBox7";
-      this.groupBox7.Size = new System.Drawing.Size(166, 49);
+      this.groupBox7.Size = new System.Drawing.Size(234, 49);
       this.groupBox7.TabIndex = 4;
       this.groupBox7.TabStop = false;
       this.groupBox7.Text = "Map Size";
@@ -574,35 +578,45 @@
       // 
       // tabControl1
       // 
-      this.tabControl1.Controls.Add(this.tabMap);
-      this.tabControl1.Controls.Add(this.tabPage2);
+      this.tabControl1.Controls.Add(this.tabCombat);
+      this.tabControl1.Controls.Add(this.tabMapEditor);
       this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Location = new System.Drawing.Point(320, 0);
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(548, 624);
+      this.tabControl1.Size = new System.Drawing.Size(881, 655);
       this.tabControl1.TabIndex = 3;
       // 
-      // tabMap
+      // tabCombat
       // 
-      this.tabMap.Controls.Add(this.map);
-      this.tabMap.Controls.Add(this.panel2);
-      this.tabMap.Location = new System.Drawing.Point(4, 22);
-      this.tabMap.Name = "tabMap";
-      this.tabMap.Padding = new System.Windows.Forms.Padding(3);
-      this.tabMap.Size = new System.Drawing.Size(540, 598);
-      this.tabMap.TabIndex = 0;
-      this.tabMap.Text = "Map";
-      this.tabMap.UseVisualStyleBackColor = true;
+      this.tabCombat.Controls.Add(this.MainPanel);
+      this.tabCombat.Controls.Add(this.leftPanel);
+      this.tabCombat.Location = new System.Drawing.Point(4, 22);
+      this.tabCombat.Name = "tabCombat";
+      this.tabCombat.Padding = new System.Windows.Forms.Padding(3);
+      this.tabCombat.Size = new System.Drawing.Size(873, 629);
+      this.tabCombat.TabIndex = 0;
+      this.tabCombat.Text = "Combat";
+      this.tabCombat.UseVisualStyleBackColor = true;
+      // 
+      // MainPanel
+      // 
+      this.MainPanel.Controls.Add(this.map);
+      this.MainPanel.Controls.Add(this.panel2);
+      this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.MainPanel.Location = new System.Drawing.Point(268, 3);
+      this.MainPanel.Name = "MainPanel";
+      this.MainPanel.Size = new System.Drawing.Size(602, 623);
+      this.MainPanel.TabIndex = 0;
       // 
       // map
       // 
       this.map.AutoScroll = true;
       this.map.Controls.Add(this.gridPanel1);
       this.map.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.map.Location = new System.Drawing.Point(3, 3);
+      this.map.Location = new System.Drawing.Point(0, 0);
       this.map.Name = "map";
-      this.map.Size = new System.Drawing.Size(534, 543);
+      this.map.Size = new System.Drawing.Size(602, 574);
       this.map.TabIndex = 4;
       // 
       // gridPanel1
@@ -613,34 +627,44 @@
       this.gridPanel1.Size = new System.Drawing.Size(500, 500);
       this.gridPanel1.TabIndex = 3;
       // 
-      // tabPage2
-      // 
-      this.tabPage2.Location = new System.Drawing.Point(4, 22);
-      this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(540, 598);
-      this.tabPage2.TabIndex = 1;
-      this.tabPage2.Text = "Character Editor";
-      this.tabPage2.UseVisualStyleBackColor = true;
-      // 
       // leftPanel
       // 
       this.leftPanel.Controls.Add(this.groupBox2);
       this.leftPanel.Controls.Add(this.groupBox1);
       this.leftPanel.Controls.Add(this.groupBox3);
       this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
-      this.leftPanel.Location = new System.Drawing.Point(0, 0);
+      this.leftPanel.Location = new System.Drawing.Point(3, 3);
       this.leftPanel.Name = "leftPanel";
-      this.leftPanel.Size = new System.Drawing.Size(320, 624);
+      this.leftPanel.Size = new System.Drawing.Size(265, 623);
       this.leftPanel.TabIndex = 0;
+      // 
+      // tabMapEditor
+      // 
+      this.tabMapEditor.Controls.Add(this.label9);
+      this.tabMapEditor.Location = new System.Drawing.Point(4, 22);
+      this.tabMapEditor.Name = "tabMapEditor";
+      this.tabMapEditor.Padding = new System.Windows.Forms.Padding(3);
+      this.tabMapEditor.Size = new System.Drawing.Size(873, 629);
+      this.tabMapEditor.TabIndex = 1;
+      this.tabMapEditor.Text = "Character Editor";
+      this.tabMapEditor.UseVisualStyleBackColor = true;
+      // 
+      // label9
+      // 
+      this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label9.Location = new System.Drawing.Point(3, 3);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(867, 623);
+      this.label9.TabIndex = 0;
+      this.label9.Text = "In Development";
+      this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // DMScreen
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(868, 624);
+      this.ClientSize = new System.Drawing.Size(881, 655);
       this.Controls.Add(this.tabControl1);
-      this.Controls.Add(this.leftPanel);
       this.Name = "DMScreen";
       this.Text = "DM Screen";
       this.groupBox1.ResumeLayout(false);
@@ -670,9 +694,11 @@
       this.groupBox6.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
       this.tabControl1.ResumeLayout(false);
-      this.tabMap.ResumeLayout(false);
+      this.tabCombat.ResumeLayout(false);
+      this.MainPanel.ResumeLayout(false);
       this.map.ResumeLayout(false);
       this.leftPanel.ResumeLayout(false);
+      this.tabMapEditor.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -706,8 +732,8 @@
     private System.Windows.Forms.OpenFileDialog openFileDialog1;
     private System.Windows.Forms.CheckBox checkBox1;
     private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.TabPage tabMap;
-    private System.Windows.Forms.TabPage tabPage2;
+    private System.Windows.Forms.TabPage tabCombat;
+    private System.Windows.Forms.TabPage tabMapEditor;
     private System.Windows.Forms.Panel panel3;
     private System.Windows.Forms.Panel leftPanel;
     private System.Windows.Forms.CheckBox newPlayerIsVisible;
@@ -724,6 +750,8 @@
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Panel panel5;
     private System.Windows.Forms.Button button4;
+    private System.Windows.Forms.Panel MainPanel;
+    private System.Windows.Forms.Label label9;
 
   }
 }

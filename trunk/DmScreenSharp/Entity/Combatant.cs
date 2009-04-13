@@ -154,5 +154,11 @@ namespace DmScreenSharp.Entity {
         Updated(this, property);
       }
     }
+
+    internal static void sendAll(Combatant source, CombatantUpdatedModifiedDelegate del) {
+      foreach (Combatant.CombatantProperty property in Enum.GetValues(typeof(Combatant.CombatantProperty))) {
+        del(source, property);
+      }
+    }
   }
 }
