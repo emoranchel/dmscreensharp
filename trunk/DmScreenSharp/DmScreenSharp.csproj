@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5F581F2-B62C-42B8-B2F8-307309010EBF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DmScreenSharp</RootNamespace>
+    <AssemblyName>DmScreenSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\WindowsFormsIntegration\3.0.0.0__31bf3856ad364e35\WindowsFormsIntegration.dll</HintPath>
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationControl.cs" />
+    <Compile Include="Components\Bar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CharacterCombatVisualizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CharacterCombatVisualizer.Designer.cs">
+      <DependentUpon>CharacterCombatVisualizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayersView.Designer.cs">
+      <DependentUpon>PlayersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CombatantEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CombatantEditor.Designer.cs">
+      <DependentUpon>CombatantEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CombatantPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\DistanceToolip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\DistanceToolip.Designer.cs">
+      <DependentUpon>DistanceToolip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\GridPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TrimmedPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entity\Combat.cs" />
+    <Compile Include="Entity\Combatant.cs" />
+    <Compile Include="DMScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DMScreen.Designer.cs">
+      <DependentUpon>DMScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\CharacterCombatVisualizer.resx">
+      <DependentUpon>CharacterCombatVisualizer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayersView.resx">
+      <DependentUpon>PlayersView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DMScreen.resx">
+      <DependentUpon>DMScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CombatantEditor.resx">
+      <DependentUpon>CombatantEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\DistanceToolip.resx">
+      <DependentUpon>DistanceToolip.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_057.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_030.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_034.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_062.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_071.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_082.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_087.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_088.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_089.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_090.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_108.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_124.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_158.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_175.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_177.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_189.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_247.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_280.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pin_289.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16tile10.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
