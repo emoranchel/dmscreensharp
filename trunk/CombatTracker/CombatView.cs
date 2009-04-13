@@ -20,7 +20,6 @@ namespace CombatTracker {
     public CombatView(CombatTracker.Entity.Combat combat) {
       InitializeComponent();
       this.combat = combat;
-      combatantModified = new CombatantUpdatedModifiedDelegate(combatant_Updated);
       combat.CombatModified += new CombatModifiedDelegate(combat_CombatModified);
       combat.CombatantRemoved += new CombatantDelegate(combat_CombatantRemoved);
       combat.CombatantAdded += new CombatantDelegate(combat_CombatantAdded);
@@ -33,10 +32,10 @@ namespace CombatTracker {
 
     void combat_CombatOrderChanged(Combat source, List<Combatant> newOrder) {
       foreach (CharacterCombatVisualizer viz in vizCollection.Values) {
-        combatants.Controls.Remove(viz);
+        container.Controls.Remove(viz);
       }
       foreach (Combatant c in newOrder) {
-        combatants.Controls.Add((CharacterCombatVisualizer)vizCollection[c]);
+        container.Controls.Add((CharacterCombatVisualizer)vizCollection[c]);
       }
     }
 
@@ -45,11 +44,10 @@ namespace CombatTracker {
       CharacterCombatVisualizer viz = new CharacterCombatVisualizer(combatant, combat);
       CombatantPictureBox pic = new CombatantPictureBox(combatant, combat.GridSize);
       map.Controls.Add(pic);
-      combatants.Controls.Add(viz);
+      container.Controls.Add(viz);
       vizCollection.Add(combatant, viz);
       picCollection.Add(combatant, pic);
       gridPanel1.SendToBack();
-      combatant.Updated += combatant_Updated;
     }
 
     void combat_CombatantRemoved(Combat source, Combatant combatant) {
@@ -58,11 +56,10 @@ namespace CombatTracker {
       pic.clean();
       viz.clean();
       map.Controls.Remove(pic);
-      combatants.Controls.Remove(viz);
+      container.Controls.Remove(viz);
       vizCollection.Remove(combatant);
       picCollection.Remove(combatant);
       gridPanel1.SendToBack();
-      combatant.Updated -= combatant_Updated;
     }
 
     private void combat_CombatModified(Combat source, Combat.CombatProperties property) {
@@ -74,33 +71,23 @@ namespace CombatTracker {
           foreach (CombatantPictureBox pic in picCollection.Values) {
             pic.Zoom = combat.GridSize;
           }
-          gridPanel1.GridSize = combat.GridSize;
-          repositionMapKeeper();
+          resizeGrid();
+          gridPanel1.BackgroundImage = combat.BackgroundImage(combat.GridSize);
           break;
         case Combat.CombatProperties.bgImage:
-          gridPanel1.BackgroundImage = combat.BackgroundImage;
+          gridPanel1.BackgroundImage = combat.BackgroundImage(combat.GridSize);
           break;
         case Combat.CombatProperties.bgImageTile:
           gridPanel1.BackgroundImageLayout = combat.BackgroundTileImage ? ImageLayout.Tile : ImageLayout.None;
           break;
+        case Combat.CombatProperties.size:
+          resizeGrid();
+          break;
       }
     }
-
-    private void combatant_Updated(Combatant source, Combatant.CombatantProperty property) {
-      repositionMapKeeper();
-    }
-
-    private void repositionMapKeeper() {
-      int maxX = 0;
-      int maxY = 0;
-      foreach (Combatant c in combat.Combatants) {
-        maxX = Math.Max(c.PosX, maxX);
-        maxY = Math.Max(c.PosY, maxY);
-      }
-      maxX += 10;
-      maxY += 10;
-      mapSizeKeeper.Location = new Point(combat.GridSize * maxX, combat.GridSize * maxY);
-
+    private void resizeGrid() {
+      gridPanel1.Size = new Size(combat.Width * combat.GridSize, combat.Height * combat.GridSize);
+      gridPanel1.GridSize = combat.GridSize;
     }
   }
 }

@@ -20,8 +20,6 @@ namespace CombatTracker.Components {
       this.textName.Text = combatant.Name;
       this.numCurrHp.Value = combatant.CurrentHp;
       this.numMaxHp.Value = combatant.MaxHp;
-      this.numPosY.Value = combatant.PosY;
-      this.numPosX.Value = combatant.PosX;
       this.numInit.Value = combatant.Initiative;
       this.checkPlayer.Checked = combatant.Player;
       this.pictureBox1.Image = combatant.CharacterPortrait;
@@ -30,11 +28,7 @@ namespace CombatTracker.Components {
     }
 
     void combatant_Updated(object source, Combatant.CombatantProperty property) {
-      if (property == Combatant.CombatantProperty.position || property == Combatant.CombatantProperty.ALL) {
-        this.numPosY.Value = combatant.PosY;
-        this.numPosX.Value = combatant.PosX;
-      }
-      if (property == Combatant.CombatantProperty.portrait || property == Combatant.CombatantProperty.ALL) {
+      if (property == Combatant.CombatantProperty.portrait) {
         this.pictureBox1.Image = combatant.CharacterPortrait;
       }
     }
@@ -79,14 +73,6 @@ namespace CombatTracker.Components {
 
     private void numericUpDown5_ValueChanged(object sender, EventArgs e) {
       combatant.Initiative = (int)numInit.Value;
-    }
-
-    private void numericUpDown4_ValueChanged(object sender, EventArgs e) {
-      combatant.PosX = (int)numPosX.Value;
-    }
-
-    private void numericUpDown3_ValueChanged(object sender, EventArgs e) {
-      combatant.PosY = (int)numPosY.Value;
     }
 
     public void clean() {

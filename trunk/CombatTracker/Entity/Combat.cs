@@ -10,7 +10,7 @@ namespace CombatTracker.Entity {
   public delegate void CombatantDelegate(Combat source, Combatant combatant);
 
   public class Combat {
-    public enum CombatProperties { currentInitiative, gridSize, bgImage, bgImageTile }
+    public enum CombatProperties { currentInitiative, gridSize, bgImage, bgImageTile, size }
     private List<Combatant> combatants = new List<Combatant>();
 
     public event CombatModifiedDelegate CombatModified;
@@ -22,8 +22,9 @@ namespace CombatTracker.Entity {
     private int gridSize;
     private Image originalImage;
     private int imageRez;
-    private Image bgImage;
     private bool tileImage;
+    private int width = 20;
+    private int height = 20;
 
     private List<int> initiatives = new List<int>();
 
@@ -35,7 +36,7 @@ namespace CombatTracker.Entity {
       tileImage = true;
       originalImage = CombatTracker.Properties.Resources.defaultTile;
       combatantDelegate = new CombatantUpdatedModifiedDelegate(combatant_Updated);
-      recalculateBg();
+      onCombatModified(CombatProperties.bgImage);
     }
 
     public List<Combatant> Combatants {
@@ -49,7 +50,6 @@ namespace CombatTracker.Entity {
         if (gridSize == value) return;
         this.gridSize = value;
         onCombatModified(CombatProperties.gridSize);
-        recalculateBg();
       }
     }
 
@@ -105,15 +105,31 @@ namespace CombatTracker.Entity {
 
     public Image OriginalImage {
       get { return originalImage; }
-      set { this.originalImage = value; recalculateBg(); }
+      set { this.originalImage = value; onCombatModified(CombatProperties.bgImage); }
     }
     public int OriginalImageResolution {
       get { return imageRez; }
-      set { this.imageRez = value; recalculateBg(); }
+      set { this.imageRez = value; onCombatModified(CombatProperties.bgImage); }
     }
 
-    public Image BackgroundImage {
-      get { return bgImage; }
+    public int Height {
+      get { return height; }
+      set { height = value; onCombatModified(CombatProperties.size); }
+    }
+
+    public int Width {
+      get { return width; }
+      set { width = value; onCombatModified(CombatProperties.size); }
+    }
+
+    public Image BackgroundImage(int squareSize) {
+      double resizeFactor = (double)gridSize / (double)imageRez;
+      int width = (int)(originalImage.Width * resizeFactor);
+      int height = (int)(originalImage.Height * resizeFactor);
+      Image bg = new Bitmap(width, height);
+      Graphics g = Graphics.FromImage(bg);
+      g.DrawImage(originalImage, new Rectangle(0, 0, width, height));
+      return bg;
     }
 
     public bool BackgroundTileImage {
@@ -130,22 +146,9 @@ namespace CombatTracker.Entity {
       combatant.Updated -= combatantDelegate;
     }
 
-    private void recalculateBg() {
-      if (originalImage == null)
-        return;
-      //an square of imageRez x ImageRez should be resized to gridSize x gridSize in order for this to work.
-      double resizeFactor = (double)gridSize / (double)imageRez;
-      int width = (int)(originalImage.Width * resizeFactor);
-      int height = (int)(originalImage.Height * resizeFactor);
-      Image bg = new Bitmap(width, height);
-      Graphics g = Graphics.FromImage(bg);
-      g.DrawImage(originalImage, new Rectangle(0, 0, width, height));
-      bgImage = bg;
-      onCombatModified(CombatProperties.bgImage);
-    }
 
     private void combatant_Updated(Combatant source, Combatant.CombatantProperty property) {
-      if (property == Combatant.CombatantProperty.initiative || property == Combatant.CombatantProperty.ALL) {
+      if (property == Combatant.CombatantProperty.initiative) {
         initiatives = new List<int>();
         combatants.Sort(new Comparison<Combatant>(compareCombatants));
         foreach (Combatant c in combatants) {

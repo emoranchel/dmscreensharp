@@ -26,10 +26,10 @@
       this.mapGroup = new System.Windows.Forms.GroupBox();
       this.map = new System.Windows.Forms.Panel();
       this.combatants = new System.Windows.Forms.GroupBox();
+      this.container = new System.Windows.Forms.Panel();
       this.panel2 = new System.Windows.Forms.Panel();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.mapSizeKeeper = new System.Windows.Forms.Panel();
       this.gridPanel1 = new CombatTracker.Components.GridPanel();
       this.mapGroup.SuspendLayout();
       this.map.SuspendLayout();
@@ -44,7 +44,7 @@
       this.mapGroup.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mapGroup.Location = new System.Drawing.Point(258, 0);
       this.mapGroup.Name = "mapGroup";
-      this.mapGroup.Size = new System.Drawing.Size(470, 463);
+      this.mapGroup.Size = new System.Drawing.Size(328, 306);
       this.mapGroup.TabIndex = 0;
       this.mapGroup.TabStop = false;
       this.mapGroup.Text = "Map";
@@ -53,24 +53,32 @@
       // 
       this.map.AutoScroll = true;
       this.map.BackColor = System.Drawing.Color.GhostWhite;
-      this.map.Controls.Add(this.mapSizeKeeper);
       this.map.Controls.Add(this.gridPanel1);
       this.map.Dock = System.Windows.Forms.DockStyle.Fill;
       this.map.Location = new System.Drawing.Point(3, 16);
       this.map.Name = "map";
-      this.map.Size = new System.Drawing.Size(464, 444);
+      this.map.Size = new System.Drawing.Size(322, 287);
       this.map.TabIndex = 0;
       // 
       // combatants
       // 
       this.combatants.BackColor = System.Drawing.Color.Transparent;
+      this.combatants.Controls.Add(this.container);
       this.combatants.Controls.Add(this.panel2);
       this.combatants.Dock = System.Windows.Forms.DockStyle.Left;
       this.combatants.Location = new System.Drawing.Point(0, 0);
       this.combatants.Name = "combatants";
-      this.combatants.Size = new System.Drawing.Size(258, 463);
+      this.combatants.Size = new System.Drawing.Size(258, 306);
       this.combatants.TabIndex = 1;
       this.combatants.TabStop = false;
+      // 
+      // container
+      // 
+      this.container.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.container.Location = new System.Drawing.Point(3, 60);
+      this.container.Name = "container";
+      this.container.Size = new System.Drawing.Size(252, 243);
+      this.container.TabIndex = 0;
       // 
       // panel2
       // 
@@ -103,39 +111,27 @@
       this.label1.Text = "label1";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       // 
-      // mapSizeKeeper
-      // 
-      this.mapSizeKeeper.BackColor = System.Drawing.Color.Black;
-      this.mapSizeKeeper.Location = new System.Drawing.Point(100, 100);
-      this.mapSizeKeeper.Name = "mapSizeKeeper";
-      this.mapSizeKeeper.Size = new System.Drawing.Size(1, 1);
-      this.mapSizeKeeper.TabIndex = 0;
-      // 
       // gridPanel1
       // 
-      this.gridPanel1.AutoSize = true;
-      this.gridPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.gridPanel1.BackColor = System.Drawing.Color.Transparent;
       this.gridPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-      this.gridPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.gridPanel1.GridSize = 25;
       this.gridPanel1.Location = new System.Drawing.Point(0, 0);
       this.gridPanel1.Name = "gridPanel1";
-      this.gridPanel1.Size = new System.Drawing.Size(464, 444);
+      this.gridPanel1.Size = new System.Drawing.Size(500, 500);
       this.gridPanel1.TabIndex = 0;
       // 
       // CombatView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(728, 463);
+      this.ClientSize = new System.Drawing.Size(586, 306);
       this.Controls.Add(this.mapGroup);
       this.Controls.Add(this.combatants);
       this.Name = "CombatView";
       this.Text = "Combatants";
       this.mapGroup.ResumeLayout(false);
       this.map.ResumeLayout(false);
-      this.map.PerformLayout();
       this.combatants.ResumeLayout(false);
       this.panel2.ResumeLayout(false);
       this.groupBox3.ResumeLayout(false);
@@ -152,6 +148,6 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.Panel map;
-    private System.Windows.Forms.Panel mapSizeKeeper;
+    private System.Windows.Forms.Panel container;
   }
 }

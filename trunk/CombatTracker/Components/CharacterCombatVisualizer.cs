@@ -19,7 +19,13 @@ namespace CombatTracker {
       this.Dock = DockStyle.Top;
       this.combatant = combatant;
       this.combat = combat;
-      combatant_Updated(combatant, Combatant.CombatantProperty.ALL);
+      combatant_Updated(combatant, Combatant.CombatantProperty.hp);
+      combatant_Updated(combatant, Combatant.CombatantProperty.initiative);
+      combatant_Updated(combatant, Combatant.CombatantProperty.name);
+      combatant_Updated(combatant, Combatant.CombatantProperty.player);
+      combatant_Updated(combatant, Combatant.CombatantProperty.portrait);
+      combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      combatant_Updated(combatant, Combatant.CombatantProperty.visible);
       combatantUpdatedDelegate = new CombatantUpdatedModifiedDelegate(combatant_Updated);
       combatDelegate = new CombatModifiedDelegate(combat_CombatModified);
       combatant.Updated += combatantUpdatedDelegate;
