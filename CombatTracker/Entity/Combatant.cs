@@ -8,7 +8,7 @@ namespace CombatTracker.Entity {
   public delegate void CombatantUpdatedModifiedDelegate(Combatant source, Combatant.CombatantProperty property);
 
   public class Combatant {
-    public enum CombatantProperty { name, hp, position, portrait, initiative, player, visible };
+    public enum CombatantProperty { name, hp, position, portrait, initiative, player, visible, size };
     private static int counter;
     private string name;
     private int maxHp;
@@ -19,6 +19,7 @@ namespace CombatTracker.Entity {
     private int initiative;
     private int id;
     private bool visible;
+    private Size size;
 
     public event CombatantUpdatedModifiedDelegate Updated;
 
@@ -40,12 +41,22 @@ namespace CombatTracker.Entity {
         Console.WriteLine("combatant new position now at: " + position.ToString());
       }
     }
+
+    public Size Size {
+      get { return size; }
+      set {
+        if (this.size == value) return;
+        this.size = value;
+        onUpdate(CombatantProperty.size);
+      }
+    }
+
     public bool Visible {
       get { return visible; }
       set { visible = value; onUpdate(CombatantProperty.visible); }
     }
 
-    public Combatant(string name, int maxHp, int init, bool player, bool visible) {
+    public Combatant(string name, int maxHp, int init, bool player, bool visible, Size size) {
       this.id = counter++;
       this.name = name;
       this.maxHp = maxHp;
@@ -54,6 +65,7 @@ namespace CombatTracker.Entity {
       this.initiative = init;
       this.position = new Point(0, 0);
       this.visible = visible;
+      this.size = size;
       this.characterPortrait = getPortrait(id);
     }
 

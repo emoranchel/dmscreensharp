@@ -42,7 +42,7 @@ namespace CombatTracker {
 
     void combat_CombatantAdded(Combat source, Combatant combatant) {
       CharacterCombatVisualizer viz = new CharacterCombatVisualizer(combatant, combat);
-      CombatantPictureBox pic = new CombatantPictureBox(combatant, combat.GridSize);
+      CombatantPictureBox pic = new CombatantPictureView(combatant, combat.GridSize);
       map.Controls.Add(pic);
       container.Controls.Add(viz);
       vizCollection.Add(combatant, viz);
