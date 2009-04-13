@@ -79,12 +79,14 @@ namespace CombatTracker {
       string name = newPlayerName.Text;
       bool isPlayer = newPlayerIsPlayer.Checked;
       Size size = new Size((int)newPlayerWidth.Value, (int)newPlayerHeight.Value);
-      Combatant combatant = new Combatant(name, hp, init, isPlayer, true, size);
+      bool visible = newPlayerIsVisible.Checked;
+      Combatant combatant = new Combatant(name, hp, init, isPlayer, visible, size);
       newPlayerIsPlayer.Checked = false;
       newPlayerHp.Value = 1;
       newPlayerInit.Value = 0;
       newPlayerWidth.Value = 1;
       newPlayerHeight.Value = 1;
+      newPlayerIsVisible.Checked = false;
       newPlayerName.Text = "";
       combat.addCombatant(combatant);
     }

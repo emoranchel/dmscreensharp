@@ -34,25 +34,16 @@ namespace CombatTracker.Components {
     }
 
     private void button1_Click(object sender, EventArgs e) {
-      openFileDialog1.ShowDialog();
-      Image image = new Bitmap(openFileDialog1.FileName);
-    }
-
-    private void button2_Click(object sender, EventArgs e) {
-      combat.removeCombatant(combatant);
+      try {
+        openFileDialog1.ShowDialog();
+        combatant.CharacterPortrait = new Bitmap(openFileDialog1.FileName);
+      } catch (System.Exception) { }
     }
 
     private void numericUpDown_Enter(object sender, EventArgs e) {
       if (sender is NumericUpDown) {
         ((NumericUpDown)sender).Select(0, 1000);
       }
-    }
-
-    private void button1_Click_1(object sender, EventArgs e) {
-      try {
-        openFileDialog1.ShowDialog();
-        combatant.CharacterPortrait = new Bitmap(openFileDialog1.FileName);
-      } catch (System.Exception) { }
     }
 
     private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
@@ -77,6 +68,14 @@ namespace CombatTracker.Components {
 
     public void clean() {
       combatant.Updated -= combatantDelegate;
+    }
+
+    private void checkBox1_CheckedChanged_1(object sender, EventArgs e) {
+      combatant.Visible = checkBox1.Checked;
+    }
+
+    private void button1_Click_1(object sender, EventArgs e) {
+      combat.removeCombatant(combatant);
     }
   }
 }

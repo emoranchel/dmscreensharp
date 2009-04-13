@@ -34,6 +34,7 @@
       this.label3 = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.checkBox1 = new System.Windows.Forms.CheckBox();
+      this.button1 = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.numCurrHp)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numMaxHp)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numInit)).BeginInit();
@@ -45,7 +46,7 @@
       this.textName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textName.Location = new System.Drawing.Point(82, 3);
       this.textName.Name = "textName";
-      this.textName.Size = new System.Drawing.Size(199, 26);
+      this.textName.Size = new System.Drawing.Size(150, 26);
       this.textName.TabIndex = 0;
       this.textName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
       // 
@@ -141,6 +142,7 @@
       this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.pictureBox1.TabIndex = 13;
       this.pictureBox1.TabStop = false;
+      this.pictureBox1.Click += new System.EventHandler(this.button1_Click);
       // 
       // checkBox1
       // 
@@ -151,12 +153,24 @@
       this.checkBox1.TabIndex = 14;
       this.checkBox1.Text = "Vis";
       this.checkBox1.UseVisualStyleBackColor = true;
+      this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+      // 
+      // button1
+      // 
+      this.button1.Location = new System.Drawing.Point(238, 5);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(56, 23);
+      this.button1.TabIndex = 15;
+      this.button1.Text = "Delete";
+      this.button1.UseVisualStyleBackColor = true;
+      this.button1.Click += new System.EventHandler(this.button1_Click_1);
       // 
       // CombatantEditor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.Controls.Add(this.button1);
       this.Controls.Add(this.checkBox1);
       this.Controls.Add(this.pictureBox1);
       this.Controls.Add(this.label3);
@@ -191,5 +205,6 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.PictureBox pictureBox1;
     private System.Windows.Forms.CheckBox checkBox1;
+    private System.Windows.Forms.Button button1;
   }
 }
