@@ -63,7 +63,7 @@ namespace CombatTracker {
       container.Controls.Add(edit);
       combatantControls.Add(combatant, edit);
       //Adding picture to the map.
-      CombatantPictureBox pic = new CombatantPictureBox(combatant, SCREEN_GRID_SIZE);
+      CombatantPictureBox pic = new CombatantPictureDM(combatant, SCREEN_GRID_SIZE);
       map.Controls.Add(pic);
       picCollection.Add(combatant, pic);
       gridPanel1.SendToBack();
@@ -78,10 +78,13 @@ namespace CombatTracker {
       int init = (int)newPlayerInit.Value;
       string name = newPlayerName.Text;
       bool isPlayer = newPlayerIsPlayer.Checked;
-      Combatant combatant = new Combatant(name, hp, init, isPlayer, true);
+      Size size = new Size((int)newPlayerWidth.Value, (int)newPlayerHeight.Value);
+      Combatant combatant = new Combatant(name, hp, init, isPlayer, true, size);
       newPlayerIsPlayer.Checked = false;
-      newPlayerHp.Value = 0;
+      newPlayerHp.Value = 1;
       newPlayerInit.Value = 0;
+      newPlayerWidth.Value = 1;
+      newPlayerHeight.Value = 1;
       newPlayerName.Text = "";
       combat.addCombatant(combatant);
     }

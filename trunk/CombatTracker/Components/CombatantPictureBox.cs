@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace CombatTracker.Components {
-  public class CombatantPictureBox : PictureBox {
+  public abstract class CombatantPictureBox : PictureBox {
     private Combatant combatant;
     private int zoom = 25;
     private CombatantUpdatedModifiedDelegate combatantDelegate;
@@ -20,6 +20,7 @@ namespace CombatTracker.Components {
         this.zoom = value;
         this.Size = new System.Drawing.Size(zoom, zoom);
         combatant_Updated(combatant, Combatant.CombatantProperty.position);
+        combatant_Updated(combatant, Combatant.CombatantProperty.size);
         this.Invalidate();
       }
     }
@@ -35,6 +36,7 @@ namespace CombatTracker.Components {
       combatant.Updated += combatantDelegate;
       combatant_Updated(combatant, Combatant.CombatantProperty.portrait);
       combatant_Updated(combatant, Combatant.CombatantProperty.position);
+      combatant_Updated(combatant, Combatant.CombatantProperty.size);
       this.Zoom = pictureSize;
     }
 
@@ -49,6 +51,9 @@ namespace CombatTracker.Components {
       }
       if (property == Combatant.CombatantProperty.portrait) {
         this.Image = combatant.CharacterPortrait;
+      }
+      if (property == Combatant.CombatantProperty.size) {
+        this.Size = new Size(combatant.Size.Width * zoom, combatant.Size.Height * zoom);
       }
     }
 
@@ -116,5 +121,12 @@ namespace CombatTracker.Components {
 
     [DllImport("user32.dll")]
     static extern bool GetCursorPos(ref Point lpPoint);
+  }
+
+  public class CombatantPictureDM : CombatantPictureBox {
+    public CombatantPictureDM(Combatant combatant, int pictureSize) : base(combatant, pictureSize) { }
+  }
+  public class CombatantPictureView : CombatantPictureBox {
+    public CombatantPictureView(Combatant combatant, int pictureSize) : base(combatant, pictureSize) { }
   }
 }

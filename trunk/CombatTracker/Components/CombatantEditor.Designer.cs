@@ -33,6 +33,7 @@
       this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
+      this.checkBox1 = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.numCurrHp)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numMaxHp)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.numInit)).BeginInit();
@@ -97,17 +98,17 @@
       // checkPlayer
       // 
       this.checkPlayer.AutoSize = true;
-      this.checkPlayer.Location = new System.Drawing.Point(199, 51);
+      this.checkPlayer.Location = new System.Drawing.Point(197, 51);
       this.checkPlayer.Name = "checkPlayer";
-      this.checkPlayer.Size = new System.Drawing.Size(54, 17);
+      this.checkPlayer.Size = new System.Drawing.Size(43, 17);
       this.checkPlayer.TabIndex = 1;
-      this.checkPlayer.Text = "player";
+      this.checkPlayer.Text = "Plyr";
       this.checkPlayer.UseVisualStyleBackColor = true;
       this.checkPlayer.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
       // 
       // numInit
       // 
-      this.numInit.Location = new System.Drawing.Point(137, 51);
+      this.numInit.Location = new System.Drawing.Point(132, 51);
       this.numInit.Name = "numInit";
       this.numInit.Size = new System.Drawing.Size(59, 20);
       this.numInit.TabIndex = 6;
@@ -141,11 +142,22 @@
       this.pictureBox1.TabIndex = 13;
       this.pictureBox1.TabStop = false;
       // 
+      // checkBox1
+      // 
+      this.checkBox1.AutoSize = true;
+      this.checkBox1.Location = new System.Drawing.Point(242, 52);
+      this.checkBox1.Name = "checkBox1";
+      this.checkBox1.Size = new System.Drawing.Size(40, 17);
+      this.checkBox1.TabIndex = 14;
+      this.checkBox1.Text = "Vis";
+      this.checkBox1.UseVisualStyleBackColor = true;
+      // 
       // CombatantEditor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.Controls.Add(this.checkBox1);
       this.Controls.Add(this.pictureBox1);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
@@ -178,5 +190,6 @@
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.CheckBox checkBox1;
   }
 }
