@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 
 namespace CombatTracker.Components {
   public abstract class CombatantPictureBox : PictureBox {
-    private Combatant combatant;
-    private int zoom = 25;
+    protected Combatant combatant;
+    protected int zoom = 25;
     private CombatantUpdatedModifiedDelegate combatantDelegate;
 
     public int Zoom {
@@ -57,7 +57,7 @@ namespace CombatTracker.Components {
       }
     }
 
-    public void clean() {
+    public virtual void clean() {
       combatant.Updated -= combatantDelegate;
     }
 
@@ -127,6 +127,21 @@ namespace CombatTracker.Components {
     public CombatantPictureDM(Combatant combatant, int pictureSize) : base(combatant, pictureSize) { }
   }
   public class CombatantPictureView : CombatantPictureBox {
-    public CombatantPictureView(Combatant combatant, int pictureSize) : base(combatant, pictureSize) { }
+    CombatantUpdatedModifiedDelegate combatantDelegate;
+    public CombatantPictureView(Combatant combatant, int pictureSize) : base(combatant, pictureSize) {
+      combatantDelegate = new CombatantUpdatedModifiedDelegate(combatant_Updated);
+      combatant.Updated += combatantDelegate;
+      combatant_Updated(combatant, Combatant.CombatantProperty.visible);
+    }
+
+    private void combatant_Updated(Combatant source, Combatant.CombatantProperty property) {
+      if (property == Combatant.CombatantProperty.visible) {
+        this.Visible = source.Visible;
+      }
+    }
+    public override void clean() {
+      base.clean();
+      combatant.Updated -= combatantDelegate;
+    }
   }
 }

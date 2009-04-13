@@ -31,10 +31,15 @@
       this.label4 = new System.Windows.Forms.Label();
       this.newPlayerHp = new System.Windows.Forms.NumericUpDown();
       this.label2 = new System.Windows.Forms.Label();
+      this.panel4 = new System.Windows.Forms.Panel();
+      this.newPlayerHeight = new System.Windows.Forms.NumericUpDown();
+      this.label7 = new System.Windows.Forms.Label();
+      this.newPlayerWidth = new System.Windows.Forms.NumericUpDown();
+      this.label8 = new System.Windows.Forms.Label();
       this.panel1 = new System.Windows.Forms.Panel();
       this.newPlayerName = new System.Windows.Forms.TextBox();
       this.newPlayerIsPlayer = new System.Windows.Forms.CheckBox();
-      this.newPlayerIsHidden = new System.Windows.Forms.CheckBox();
+      this.newPlayerIsVisible = new System.Windows.Forms.CheckBox();
       this.label1 = new System.Windows.Forms.Label();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -61,15 +66,13 @@
       this.tabPage2 = new System.Windows.Forms.TabPage();
       this.leftPanel = new System.Windows.Forms.Panel();
       this.gridPanel1 = new CombatTracker.Components.GridPanel();
-      this.panel4 = new System.Windows.Forms.Panel();
-      this.newPlayerHeight = new System.Windows.Forms.NumericUpDown();
-      this.label7 = new System.Windows.Forms.Label();
-      this.newPlayerWidth = new System.Windows.Forms.NumericUpDown();
-      this.label8 = new System.Windows.Forms.Label();
       this.groupBox1.SuspendLayout();
       this.panel3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerInit)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerHp)).BeginInit();
+      this.panel4.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.newPlayerHeight)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.newPlayerWidth)).BeginInit();
       this.panel1.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.groupBox3.SuspendLayout();
@@ -86,9 +89,6 @@
       this.tabMap.SuspendLayout();
       this.map.SuspendLayout();
       this.leftPanel.SuspendLayout();
-      this.panel4.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.newPlayerHeight)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.newPlayerWidth)).BeginInit();
       this.SuspendLayout();
       // 
       // container
@@ -181,11 +181,91 @@
       this.label2.TabIndex = 3;
       this.label2.Text = "Hp";
       // 
+      // panel4
+      // 
+      this.panel4.Controls.Add(this.newPlayerHeight);
+      this.panel4.Controls.Add(this.label7);
+      this.panel4.Controls.Add(this.newPlayerWidth);
+      this.panel4.Controls.Add(this.label8);
+      this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel4.Location = new System.Drawing.Point(3, 39);
+      this.panel4.Name = "panel4";
+      this.panel4.Size = new System.Drawing.Size(314, 22);
+      this.panel4.TabIndex = 7;
+      // 
+      // newPlayerHeight
+      // 
+      this.newPlayerHeight.Dock = System.Windows.Forms.DockStyle.Left;
+      this.newPlayerHeight.Location = new System.Drawing.Point(119, 0);
+      this.newPlayerHeight.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+      this.newPlayerHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      this.newPlayerHeight.Name = "newPlayerHeight";
+      this.newPlayerHeight.Size = new System.Drawing.Size(52, 20);
+      this.newPlayerHeight.TabIndex = 2;
+      this.newPlayerHeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+      this.label7.Location = new System.Drawing.Point(95, 0);
+      this.label7.Name = "label7";
+      this.label7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+      this.label7.Size = new System.Drawing.Size(24, 13);
+      this.label7.TabIndex = 5;
+      this.label7.Text = "X";
+      // 
+      // newPlayerWidth
+      // 
+      this.newPlayerWidth.Dock = System.Windows.Forms.DockStyle.Left;
+      this.newPlayerWidth.Location = new System.Drawing.Point(43, 0);
+      this.newPlayerWidth.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+      this.newPlayerWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      this.newPlayerWidth.Name = "newPlayerWidth";
+      this.newPlayerWidth.Size = new System.Drawing.Size(52, 20);
+      this.newPlayerWidth.TabIndex = 1;
+      this.newPlayerWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Dock = System.Windows.Forms.DockStyle.Left;
+      this.label8.Location = new System.Drawing.Point(0, 0);
+      this.label8.Name = "label8";
+      this.label8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+      this.label8.Size = new System.Drawing.Size(43, 13);
+      this.label8.TabIndex = 3;
+      this.label8.Text = "Size: ";
+      // 
       // panel1
       // 
       this.panel1.Controls.Add(this.newPlayerName);
       this.panel1.Controls.Add(this.newPlayerIsPlayer);
-      this.panel1.Controls.Add(this.newPlayerIsHidden);
+      this.panel1.Controls.Add(this.newPlayerIsVisible);
       this.panel1.Controls.Add(this.label1);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
       this.panel1.Location = new System.Drawing.Point(3, 16);
@@ -198,14 +278,14 @@
       this.newPlayerName.Dock = System.Windows.Forms.DockStyle.Fill;
       this.newPlayerName.Location = new System.Drawing.Point(35, 0);
       this.newPlayerName.Name = "newPlayerName";
-      this.newPlayerName.Size = new System.Drawing.Size(147, 20);
+      this.newPlayerName.Size = new System.Drawing.Size(150, 20);
       this.newPlayerName.TabIndex = 0;
       // 
       // newPlayerIsPlayer
       // 
       this.newPlayerIsPlayer.AutoSize = true;
       this.newPlayerIsPlayer.Dock = System.Windows.Forms.DockStyle.Right;
-      this.newPlayerIsPlayer.Location = new System.Drawing.Point(182, 0);
+      this.newPlayerIsPlayer.Location = new System.Drawing.Point(185, 0);
       this.newPlayerIsPlayer.Name = "newPlayerIsPlayer";
       this.newPlayerIsPlayer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
       this.newPlayerIsPlayer.Size = new System.Drawing.Size(64, 23);
@@ -213,17 +293,17 @@
       this.newPlayerIsPlayer.Text = "player";
       this.newPlayerIsPlayer.UseVisualStyleBackColor = true;
       // 
-      // newPlayerIsHidden
+      // newPlayerIsVisible
       // 
-      this.newPlayerIsHidden.AutoSize = true;
-      this.newPlayerIsHidden.Dock = System.Windows.Forms.DockStyle.Right;
-      this.newPlayerIsHidden.Location = new System.Drawing.Point(246, 0);
-      this.newPlayerIsHidden.Name = "newPlayerIsHidden";
-      this.newPlayerIsHidden.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-      this.newPlayerIsHidden.Size = new System.Drawing.Size(68, 23);
-      this.newPlayerIsHidden.TabIndex = 4;
-      this.newPlayerIsHidden.Text = "hidden";
-      this.newPlayerIsHidden.UseVisualStyleBackColor = true;
+      this.newPlayerIsVisible.AutoSize = true;
+      this.newPlayerIsVisible.Dock = System.Windows.Forms.DockStyle.Right;
+      this.newPlayerIsVisible.Location = new System.Drawing.Point(249, 0);
+      this.newPlayerIsVisible.Name = "newPlayerIsVisible";
+      this.newPlayerIsVisible.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+      this.newPlayerIsVisible.Size = new System.Drawing.Size(65, 23);
+      this.newPlayerIsVisible.TabIndex = 4;
+      this.newPlayerIsVisible.Text = "visible";
+      this.newPlayerIsVisible.UseVisualStyleBackColor = true;
       // 
       // label1
       // 
@@ -386,7 +466,7 @@
       this.trackBar1.Maximum = 6;
       this.trackBar1.Minimum = 1;
       this.trackBar1.Name = "trackBar1";
-      this.trackBar1.Size = new System.Drawing.Size(74, 30);
+      this.trackBar1.Size = new System.Drawing.Size(74, 42);
       this.trackBar1.TabIndex = 3;
       this.trackBar1.Value = 1;
       this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -530,86 +610,6 @@
       this.gridPanel1.Size = new System.Drawing.Size(500, 500);
       this.gridPanel1.TabIndex = 3;
       // 
-      // panel4
-      // 
-      this.panel4.Controls.Add(this.newPlayerHeight);
-      this.panel4.Controls.Add(this.label7);
-      this.panel4.Controls.Add(this.newPlayerWidth);
-      this.panel4.Controls.Add(this.label8);
-      this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel4.Location = new System.Drawing.Point(3, 39);
-      this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(314, 22);
-      this.panel4.TabIndex = 7;
-      // 
-      // newPlayerHeight
-      // 
-      this.newPlayerHeight.Dock = System.Windows.Forms.DockStyle.Left;
-      this.newPlayerHeight.Location = new System.Drawing.Point(119, 0);
-      this.newPlayerHeight.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-      this.newPlayerHeight.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      this.newPlayerHeight.Name = "newPlayerHeight";
-      this.newPlayerHeight.Size = new System.Drawing.Size(52, 20);
-      this.newPlayerHeight.TabIndex = 2;
-      this.newPlayerHeight.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
-      // label7
-      // 
-      this.label7.AutoSize = true;
-      this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-      this.label7.Location = new System.Drawing.Point(95, 0);
-      this.label7.Name = "label7";
-      this.label7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-      this.label7.Size = new System.Drawing.Size(24, 13);
-      this.label7.TabIndex = 5;
-      this.label7.Text = "X";
-      // 
-      // newPlayerWidth
-      // 
-      this.newPlayerWidth.Dock = System.Windows.Forms.DockStyle.Left;
-      this.newPlayerWidth.Location = new System.Drawing.Point(43, 0);
-      this.newPlayerWidth.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-      this.newPlayerWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      this.newPlayerWidth.Name = "newPlayerWidth";
-      this.newPlayerWidth.Size = new System.Drawing.Size(52, 20);
-      this.newPlayerWidth.TabIndex = 1;
-      this.newPlayerWidth.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
-      // label8
-      // 
-      this.label8.AutoSize = true;
-      this.label8.Dock = System.Windows.Forms.DockStyle.Left;
-      this.label8.Location = new System.Drawing.Point(0, 0);
-      this.label8.Name = "label8";
-      this.label8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-      this.label8.Size = new System.Drawing.Size(43, 13);
-      this.label8.TabIndex = 3;
-      this.label8.Text = "Size: ";
-      // 
       // CombatScreen
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +624,10 @@
       this.panel3.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerInit)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.newPlayerHp)).EndInit();
+      this.panel4.ResumeLayout(false);
+      this.panel4.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.newPlayerHeight)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.newPlayerWidth)).EndInit();
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
       this.groupBox2.ResumeLayout(false);
@@ -644,10 +648,6 @@
       this.tabMap.ResumeLayout(false);
       this.map.ResumeLayout(false);
       this.leftPanel.ResumeLayout(false);
-      this.panel4.ResumeLayout(false);
-      this.panel4.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.newPlayerHeight)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.newPlayerWidth)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -685,7 +685,7 @@
     private System.Windows.Forms.TabPage tabPage2;
     private System.Windows.Forms.Panel panel3;
     private System.Windows.Forms.Panel leftPanel;
-    private System.Windows.Forms.CheckBox newPlayerIsHidden;
+    private System.Windows.Forms.CheckBox newPlayerIsVisible;
     private System.Windows.Forms.Panel map;
     private CombatTracker.Components.GridPanel gridPanel1;
     private System.Windows.Forms.GroupBox groupBox7;
