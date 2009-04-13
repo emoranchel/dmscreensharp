@@ -20,8 +20,6 @@ namespace DmScreenSharp.Components {
       this.textName.Text = combatant.Name;
       this.numCurrHp.Value = combatant.CurrentHp;
       this.numMaxHp.Value = combatant.MaxHp;
-      this.numInit.Value = combatant.Initiative;
-      this.checkPlayer.Checked = combatant.Player;
       this.pictureBox1.Image = combatant.CharacterPortrait;
       combatantDelegate = new CombatantUpdatedModifiedDelegate(combatant_Updated);
       combatant.Updated += combatantDelegate;
@@ -31,13 +29,13 @@ namespace DmScreenSharp.Components {
       if (property == Combatant.CombatantProperty.portrait) {
         this.pictureBox1.Image = combatant.CharacterPortrait;
       }
-    }
-
-    private void button1_Click(object sender, EventArgs e) {
-      try {
-        openFileDialog1.ShowDialog();
-        combatant.CharacterPortrait = new Bitmap(openFileDialog1.FileName);
-      } catch (System.Exception) { }
+      if (property == Combatant.CombatantProperty.name) {
+        textName.Text = combatant.Name;
+      }
+      if (property == Combatant.CombatantProperty.hp) {
+        numCurrHp.Value = combatant.CurrentHp;
+        numMaxHp.Value = combatant.MaxHp;
+      }
     }
 
     private void numericUpDown_Enter(object sender, EventArgs e) {
@@ -58,24 +56,12 @@ namespace DmScreenSharp.Components {
       combatant.Name = textName.Text;
     }
 
-    private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-      combatant.Player = checkPlayer.Checked;
-    }
-
-    private void numericUpDown5_ValueChanged(object sender, EventArgs e) {
-      combatant.Initiative = (int)numInit.Value;
-    }
-
     public void clean() {
       combatant.Updated -= combatantDelegate;
     }
 
-    private void checkBox1_CheckedChanged_1(object sender, EventArgs e) {
-      combatant.Visible = checkBox1.Checked;
-    }
-
-    private void button1_Click_1(object sender, EventArgs e) {
-      combat.removeCombatant(combatant);
+    private void pictureBox1_Click(object sender, EventArgs e) {
+      Program.Control.showCombatantEditor(combatant);
     }
   }
 }
